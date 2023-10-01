@@ -16,6 +16,7 @@
             </div>
             @endforeach
         </div>
+        <a href="/posts/create">create</a>
         <div vlass="paginate">
             {{ $posts->links() }}
         </div>
