@@ -10,7 +10,22 @@ use App\Models\Category;
 class PostController extends Controller
 {
     public function index(Post $post){
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
+        $client = new \GuzzleHttp\Client();
+        //Clientをインスタンス化
+        $url = 'https://teratail.com/api/v1/questions';
+        //参照するURLを$urlに入れる
+        $response = $client->request(
+            'GET',
+            $url,
+            ['Bearer' => config('services.teratail.token')]
+        );
+        //$responseに取ってきたデータが入る
+        $questions = json_decode($response->getBody(), true);
+        //取得したデータ(JSON型)をPHPファイルに対応した形(連想配列)にする
+        return view('posts.index')->with([
+            'posts' => $post->getPaginateByLimit(),
+            'questions' => $questions['questions'],
+            ]);
         //index.blade内でpostsテーブルのデータを扱うときの変数を'posts'とした。posts変数にはインスタンス化された$postが入っている。
     }
     
