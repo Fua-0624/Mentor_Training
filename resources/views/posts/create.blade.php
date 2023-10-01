@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="stf-8">
-        <title>Blog</title>
-        <!--Font-->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">
+        ブログ作成画面
+    </x-slot>
         <h1>Blog Name</h1>
         <form action="/posts" method="POST">
             @csrf
@@ -27,5 +22,4 @@
         <div class="footer">
             <a href="/">ブログ投稿一覧画面に戻る</a>
         </div>
-    </body>
-</html>
+</x-app-layout>

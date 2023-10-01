@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="stf-8">
-        <title>Blog</title>
-        <!--Font-->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">
+        ブログ詳細画面
+    </x-slot>
         <h1>Title:{{ $post->title }}</h1>
         <p>{{ $post->body }}</p>
         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
@@ -19,7 +14,6 @@
             <a href="/posts/{{ $post->id }}/edit">編集</a></br>
             <a href="/">ブログ投稿一覧画面に戻る</a>
         </div>
-    </body>
     <script>
         function deletePost(id){
             'use strict'
@@ -28,5 +22,5 @@
                 document.getElementById(`form_${id}`).submit();
             }
         }
-        </script>
-</html>
+    </script>
+</x-app-layout>
