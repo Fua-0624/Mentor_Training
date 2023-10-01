@@ -11,4 +11,8 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
         //index.blade内でpostsテーブルのデータを扱うときの変数を'posts'とした。posts変数にはインスタンス化された$postが入っている。
     }
+    
+    public function show(Post $post){
+        return view('posts.show')->with(['post' => $post]);
+    }
 }
