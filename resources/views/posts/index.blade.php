@@ -9,8 +9,15 @@
                 <a href="/posts/{{ $post->id }}" class='title'>{{ $post->title }}</a>
                 <p class='body'>{{ $post->body }}</p>
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-            </div>
+            </div></br>
             @endforeach
+        </div></br></br>
+        <div class="questions">
+            @foreach($questions as $question)
+            <div>
+                <a href="https://teratail.com/questions/{{ $question['id'] }}">{{ $question['title'] }}</a>
+            </div>
+            @endforeach</br>
         </div>
         <p>ログインユーザー：{{ Auth::user()->name }}</p>
         <a href="/posts/create">create</a>
