@@ -10,6 +10,7 @@
         <h1>Title:{{ $post->title }}</h1>
         <p>{{ $post->body }}</p>
         <div class="footer">
+            <a href="/posts/{{ $post->id }}/edit">編集</a>
             <a href="/">ブログ投稿一覧画面に戻る</a>
         </div>
     </body>
